@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>Carriage Return</title>
+
+		<link rel="stylesheet" href="carriage_return_style.css">
+
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script type="text/javascript" src="custom_generator.js"></script>
+		<script type="text/javascript" src="helpers.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="sidebar">
+				<div>
+					<img class="logo" src="logo.png"/>
+				</div>
+				<button id="btnDevMenu" class="active" onclick="select_tab(event, 'dev_menu')">Device menu</button>
+				<div class="sidebar_spacer"></div>
+				<button id="btnDebugMenu" onclick="select_tab(event, 'dbg_menu')" disabled>Debug log</button>
+				<button id="btnMacroMenu" onclick="select_tab(event, 'edit_menu')" disabled>Macro editor</button>
+			</div>
+
+			<div class="content" id="dev_menu" style="display: block;">
+				<div class="connection">
+					<div id="connection_status">
+						Please connect to your Carriage Return device
+					</div>
+					<button id="button_connect" onclick="connect_pressed(event)">Connect</button>
+				</div>
+				<div class="programmer">
+					<input type="file" accept=".bin" id="file_open" onchange="check_file(event)">Check CRC</button>
+				</div>
+			</div>
+
+			<div class="content" id="dbg_menu">
+				<textarea id="debug_window" readonly></textarea>
+			</div>
+
+			<div class="content" id="edit_menu">
+				<div id="macro_tools">
+					<button id="send_to_device" onclick="send_to_device(event)">Send code to device</button>
+				</div>
+				<div id="blockly_div"></div>
+			</div>
+		</div>
+	</body>
+</html>
